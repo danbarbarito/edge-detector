@@ -9,7 +9,7 @@ find_package(Boost 1.56 REQUIRED COMPONENTS
 
 find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
 
-add_executable(edge-detection src/main.cpp)
+add_executable(edge-detection src/main.cpp src/edge_detector.cpp)
 target_link_libraries(edge-detection ${Boost_LIBRARIES} sfml-graphics)
 
 install(TARGETS edge-detection)

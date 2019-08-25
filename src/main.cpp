@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "edge_detector.hpp"
+
 void help() {
   std::cout << "usage: edge-detection <image_path>" << std::endl;
   exit(1);
@@ -19,7 +21,6 @@ int main(int argc, char *argv[])
   if (command.compare("--help") == 0) {
     help();
   }
-
     
   // create the window
   sf::RenderWindow window(sf::VideoMode(800, 600), "Edge detection", sf::Style::Close | sf::Style::Titlebar);
@@ -31,12 +32,16 @@ int main(int argc, char *argv[])
     return 1;
   }
 
+  // Initialize EdgeDetector
+  EdgeDetector edgeDetector;
+
   // assign texture to sprite
   sf::Sprite sprite;
   sprite.setTexture(texture);
 
   // center sprite on screen
   sprite.setPosition((window.getSize().x / 2) - (texture.getSize().x / 2), (window.getSize().y / 2) - (texture.getSize().y / 2));
+
 
   // run the program as long as the window is open
   while (window.isOpen())
