@@ -33,11 +33,12 @@ int main(int argc, char *argv[])
   }
 
   // Initialize EdgeDetector
-  EdgeDetector edgeDetector;
+  EdgeDetector edgeDetector(image);
+  sf::Image edgedImage = edgeDetector.detect();
 
   // create texture from image
   sf::Texture texture;
-  texture.loadFromImage(image);
+  texture.loadFromImage(edgedImage);
 
   // assign texture to sprite
   sf::Sprite sprite;
