@@ -9,7 +9,12 @@ find_package(Boost 1.56 REQUIRED COMPONENTS
 
 find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
 
+find_package(Armadillo REQUIRED)
+
 add_executable(edge-detection src/main.cpp src/edge_detector.cpp)
-target_link_libraries(edge-detection ${Boost_LIBRARIES} sfml-graphics)
+
+include_directories(${ARMADILLO_INCLUDE_DIRS})
+
+target_link_libraries(edge-detection ${Boost_LIBRARIES} ${ARMADILLO_LIBRARIES} sfml-graphics)
 
 install(TARGETS edge-detection)

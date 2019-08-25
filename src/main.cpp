@@ -26,14 +26,18 @@ int main(int argc, char *argv[])
   sf::RenderWindow window(sf::VideoMode(800, 600), "Edge detection", sf::Style::Close | sf::Style::Titlebar);
 
   // load the image
-  sf::Texture texture;
-  bool loadedTexture = texture.loadFromFile(command);
-  if (!loadedTexture) {
+  sf::Image image;
+  bool loadedImage = image.loadFromFile(command);
+  if (!loadedImage) {
     return 1;
   }
 
   // Initialize EdgeDetector
   EdgeDetector edgeDetector;
+
+  // create texture from image
+  sf::Texture texture;
+  texture.loadFromImage(image);
 
   // assign texture to sprite
   sf::Sprite sprite;

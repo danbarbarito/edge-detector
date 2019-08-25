@@ -1,7 +1,8 @@
 #include "edge_detector.hpp"
 
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
-void EdgeDetector::hello() {
-  std::cout << "Hello world! From edge detector!" << std::endl;
+sf::Image EdgeDetector::detect(sf::Image image) {
+  return image;
 }

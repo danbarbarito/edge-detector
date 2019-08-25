@@ -8,3 +8,4 @@
 
 1. Boost
 2. SFML 2.5
+3. Armadillo
