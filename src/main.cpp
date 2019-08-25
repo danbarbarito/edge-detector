@@ -1,7 +1,27 @@
+#include <iostream>
+#include <string>
+
 #include <SFML/Graphics.hpp>
 
-int main()
+void help() {
+  std::cout << "usage: edge-detection <image_path>" << std::endl;
+  exit(1);
+}
+
+int main(int argc, char *argv[])
 {
+  if (argc < 2) {
+    std::cout << "ERROR: No image specified" << std::endl;
+    help();
+  }
+
+  std::string command = argv[1];
+
+  if (command.compare("--help") == 0) {
+    help();
+  }
+
+    
   // create the window
   sf::RenderWindow window(sf::VideoMode(800, 600), "Edge detection");
 
