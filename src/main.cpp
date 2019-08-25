@@ -22,14 +22,21 @@ int main(int argc, char *argv[])
 
     
   // create the window
-  sf::RenderWindow window(sf::VideoMode(800, 600), "Edge detection");
+  sf::RenderWindow window(sf::VideoMode(800, 600), "Edge detection", sf::Style::Close | sf::Style::Titlebar);
 
   // load the image
-  sf::Image image;
-  bool loadedImage = image.loadFromFile(command);
-  if (!loadedImage) {
+  sf::Texture texture;
+  bool loadedTexture = texture.loadFromFile(command);
+  if (!loadedTexture) {
     return 1;
   }
+
+  // assign texture to sprite
+  sf::Sprite sprite;
+  sprite.setTexture(texture);
+
+  // center sprite on screen
+  sprite.setPosition((window.getSize().x / 2) - (texture.getSize().x / 2), (window.getSize().y / 2) - (texture.getSize().y / 2));
 
   // run the program as long as the window is open
   while (window.isOpen())
@@ -43,8 +50,8 @@ int main(int argc, char *argv[])
     }
     window.clear(sf::Color::White);
 
-    // draw everything here...
-    // window.draw(...);
+    // draw image onto screen
+    window.draw(sprite);
 
     // end the current frame
     window.display();
