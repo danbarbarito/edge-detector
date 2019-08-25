@@ -53,13 +53,13 @@ float EdgeDetector::gradientValue(int x, int y) {
 }
 
 sf::Image EdgeDetector::detect() {
-  sf::Vector2u size = this->source_image.getSize();
+  sf::Image edgedImage = this->greyscaled_image;
+  sf::Vector2u size = edgedImage.getSize();
   for (int x = 0; x < size.x; x++) {
     for (int y = 0; y < size.y; y++) {
-      // sf::Color existingColor = this->source_image.getPixel(x, y);
-      // sf::Color newColor = this->greyscale(x, y);
-      // this->source_image.setPixel(x, y, newColor);
+      sf::Color existingColor = edgedImage.getPixel(x, y);
+      this->source_image.setPixel(x, y, existingColor);
     }
   }
-  return this->greyscaled_image;
+  return edgedImage;
 }
