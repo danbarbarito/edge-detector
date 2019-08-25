@@ -58,7 +58,7 @@ sf::Image EdgeDetector::detect() {
   for (int x = 0; x < size.x; x++) {
     for (int y = 0; y < size.y; y++) {
       sf::Color existingColor = edgedImage.getPixel(x, y);
-      this->source_image.setPixel(x, y, existingColor);
+      edgedImage.setPixel(x, y, existingColor);
     }
   }
   return edgedImage;
