@@ -11,7 +11,6 @@ void help() {
 int main(int argc, char *argv[])
 {
   if (argc < 2) {
-    std::cout << "ERROR: No image specified" << std::endl;
     help();
   }
 
@@ -24,6 +23,13 @@ int main(int argc, char *argv[])
     
   // create the window
   sf::RenderWindow window(sf::VideoMode(800, 600), "Edge detection");
+
+  // load the image
+  sf::Image image;
+  bool loadedImage = image.loadFromFile(command);
+  if (!loadedImage) {
+    return 1;
+  }
 
   // run the program as long as the window is open
   while (window.isOpen())

@@ -12,3 +12,5 @@ CTestTestfile.cmake
 _deps
 
 edge-detection
+
+data/*
