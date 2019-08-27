@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <vector>
 #include <SFML/Graphics.hpp>
 
 
@@ -10,8 +11,8 @@ EdgeDetector::EdgeDetector(sf::Image* source_image) {
   this->greyscaled_image = this->greyscaleImage(this->source_image);
 }
 
-sf::Color EdgeDetector::greyscalePixel(sf::Image* image, int x, int y) {
-  sf::Color existingColor = image->getPixel(x, y);
+sf::Color EdgeDetector::greyscalePixel(sf::Image image, int x, int y) {
+  sf::Color existingColor = image.getPixel(x, y);
 
   int r = existingColor.r;
   int g = existingColor.g;
@@ -43,6 +44,9 @@ bool EdgeDetector::pixelInBounds(sf::Image* image, int x, int y) {
 
 float EdgeDetector::gradientValue(sf::Image* image, int x, int y) {
   float gradientValue = 0;
+  float gradientX = 0;
+  float gradientY = 0;
+  
   // Gradient X
   
 
@@ -58,6 +62,8 @@ sf::Image EdgeDetector::detect() {
   for (int x = 0; x < size.x; x++) {
     for (int y = 0; y < size.y; y++) {
       sf::Color existingColor = edgedImage.getPixel(x, y);
+      float gradientValue = this->gradientValue(&edgedImage, x, y);
+      std::cout << "Gradient value: " << gradientValue << std::endl;
       edgedImage.setPixel(x, y, existingColor);
     }
   }
